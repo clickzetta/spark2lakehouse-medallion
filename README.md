@@ -6,7 +6,7 @@
 
 ## 架构对比与迁移路径
 
-![迁移架构图](migration-architecture.svg)
+![迁移架构图](00_resource/migration-architecture.svg)
 
 ## 迁移兼容性结论
 
@@ -31,6 +31,8 @@
 ## 项目结构
 
 ```
+├── 00_resource/        # 🖼️  架构图、数据模型映射 SVG
+│
 ├── 01_spark/           # 📦 原始 Databricks Notebooks（PySpark，只读参考）
 │   ├── 01_bronze/      #   Bronze 层：spark.read.csv() → Delta 写入
 │   ├── 02_silver/      #   Silver 层：DataFrame filter/withColumn/dropDuplicates
@@ -63,7 +65,7 @@
 
 ### Gold 层数据模型映射
 
-![数据模型映射](data-model-mapping.svg)
+![数据模型映射](00_resource/data-model-mapping.svg)
 
 ## 数据源
 

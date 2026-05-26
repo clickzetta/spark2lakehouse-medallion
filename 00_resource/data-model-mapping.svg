@@ -4,7 +4,7 @@
   <rect width="1000" height="620" fill="#f8f9fa" rx="12"/>
 
   <!-- Title -->
-  <text x="500" y="32" text-anchor="middle" fill="#111827" font-size="15" font-weight="bold">Medallion 数据模型映射：PySpark (Databricks) → ZettaPark (ClickZetta)</text>
+  <text x="500" y="32" text-anchor="middle" fill="#111827" font-size="15" font-weight="bold">Gold 层星型模型：Silver 表 → Gold 维度表 / 事实表（PySpark ↔ ZettaPark 完全一致）</text>
 
   <!-- ═══════════════════════════════════════════════════════ -->
   <!-- SILVER LAYER (left) -->

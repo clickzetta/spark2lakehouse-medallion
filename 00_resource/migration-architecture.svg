@@ -85,7 +85,7 @@
   <text x="750" y="164" text-anchor="middle" fill="white" font-size="11" font-weight="bold">🥉 Bronze</text>
   <text x="750" y="183" text-anchor="middle" fill="#92400e" font-size="10">session.read.csv("vol://...")</text>
   <text x="750" y="197" text-anchor="middle" fill="#92400e" font-size="10">df.write.save_as_table()</text>
-  <text x="750" y="211" text-anchor="middle" fill="#92400e" font-size="10">explicit StructType schema</text>
+  <text x="750" y="211" text-anchor="middle" fill="#92400e" font-size="10">inferSchema 自动推断</text>
 
   <!-- Arrow down -->
   <line x1="750" y1="220" x2="750" y2="240" stroke="#9ca3af" stroke-width="1.5" marker-end="url(#arr-gray)"/>
@@ -132,7 +132,7 @@
   <rect x="310" y="158" width="280" height="52" fill="#fffbeb" rx="6" stroke="#fde68a" stroke-width="1"/>
   <text x="450" y="174" text-anchor="middle" fill="#92400e" font-size="10" font-weight="bold">Bronze 层迁移</text>
   <text x="450" y="188" text-anchor="middle" fill="#78350f" font-size="9">路径格式: path → vol://schema.vol/path</text>
-  <text x="450" y="201" text-anchor="middle" fill="#78350f" font-size="9">⚠ 需显式声明 StructType schema</text>
+  <text x="450" y="201" text-anchor="middle" fill="#14532d" font-size="9">✅ inferSchema 自动推断，无需显式声明</text>
 
   <!-- Silver migration arrow + label -->
   <line x1="250" y1="283" x2="650" y2="283" stroke="#22c55e" stroke-width="2" stroke-dasharray="6,3" marker-end="url(#arr-green)"/>
@@ -147,7 +147,7 @@
   <rect x="310" y="356" width="280" height="52" fill="#fffbeb" rx="6" stroke="#fef08a" stroke-width="1"/>
   <text x="450" y="372" text-anchor="middle" fill="#713f12" font-size="10" font-weight="bold">Gold 层迁移</text>
   <text x="450" y="386" text-anchor="middle" fill="#78350f" font-size="9">from pyspark.sql.window import Window</text>
-  <text x="450" y="399" text-anchor="middle" fill="#78350f" font-size="9">→ from clickzetta.zettapark import Window</text>
+  <text x="450" y="399" text-anchor="middle" fill="#78350f" font-size="9">→ from clickzetta.zettapark.window import Window</text>
 
   <!-- Connection change note -->
   <rect x="320" y="430" width="260" height="40" fill="#eff6ff" rx="6" stroke="#bfdbfe" stroke-width="1"/>
