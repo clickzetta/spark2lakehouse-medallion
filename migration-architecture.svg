@@ -1,0 +1,173 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 540" font-family="'Segoe UI', Arial, sans-serif">
+
+  <!-- Background -->
+  <rect width="900" height="540" fill="#f8f9fa" rx="12"/>
+
+  <!-- ── LEFT SIDE: Databricks / PySpark ── -->
+  <rect x="20" y="20" width="260" height="500" fill="#fff" rx="10" stroke="#e0e0e0" stroke-width="1.5"/>
+
+  <!-- Left header -->
+  <rect x="20" y="20" width="260" height="48" fill="#1a1a2e" rx="10"/>
+  <rect x="20" y="48" width="260" height="20" fill="#1a1a2e"/>
+  <text x="150" y="50" text-anchor="middle" fill="white" font-size="14" font-weight="bold">Databricks</text>
+  <text x="150" y="66" text-anchor="middle" fill="#aab4c8" font-size="11">PySpark · Delta Lake</text>
+
+  <!-- CSV Source -->
+  <rect x="50" y="90" width="200" height="38" fill="#f0f4ff" rx="6" stroke="#c5d0f0" stroke-width="1"/>
+  <text x="150" y="107" text-anchor="middle" fill="#3a3a6e" font-size="11" font-weight="bold">CSV Files</text>
+  <text x="150" y="121" text-anchor="middle" fill="#6b7280" font-size="10">CRM + ERP datasets</text>
+
+  <!-- Arrow down -->
+  <line x1="150" y1="128" x2="150" y2="148" stroke="#9ca3af" stroke-width="1.5" marker-end="url(#arr-gray)"/>
+
+  <!-- Bronze -->
+  <rect x="50" y="148" width="200" height="72" fill="#fef3e2" rx="8" stroke="#f59e0b" stroke-width="1.5"/>
+  <rect x="50" y="148" width="200" height="24" fill="#f59e0b" rx="8"/>
+  <rect x="50" y="160" width="200" height="12" fill="#f59e0b"/>
+  <text x="150" y="164" text-anchor="middle" fill="white" font-size="11" font-weight="bold">🥉 Bronze</text>
+  <text x="150" y="183" text-anchor="middle" fill="#92400e" font-size="10">spark.read.csv(path)</text>
+  <text x="150" y="197" text-anchor="middle" fill="#92400e" font-size="10">df.write.saveAsTable()</text>
+  <text x="150" y="211" text-anchor="middle" fill="#92400e" font-size="10">inferSchema=True</text>
+
+  <!-- Arrow down -->
+  <line x1="150" y1="220" x2="150" y2="240" stroke="#9ca3af" stroke-width="1.5" marker-end="url(#arr-gray)"/>
+
+  <!-- Silver -->
+  <rect x="50" y="240" width="200" height="86" fill="#f0fdf4" rx="8" stroke="#22c55e" stroke-width="1.5"/>
+  <rect x="50" y="240" width="200" height="24" fill="#22c55e" rx="8"/>
+  <rect x="50" y="252" width="200" height="12" fill="#22c55e"/>
+  <text x="150" y="256" text-anchor="middle" fill="white" font-size="11" font-weight="bold">🥈 Silver</text>
+  <text x="150" y="275" text-anchor="middle" fill="#166534" font-size="10">df.withColumn()</text>
+  <text x="150" y="289" text-anchor="middle" fill="#166534" font-size="10">df.dropDuplicates()</text>
+  <text x="150" y="303" text-anchor="middle" fill="#166534" font-size="10">F.when().otherwise()</text>
+  <text x="150" y="317" text-anchor="middle" fill="#166534" font-size="10">Window.partitionBy()</text>
+
+  <!-- Arrow down -->
+  <line x1="150" y1="326" x2="150" y2="346" stroke="#9ca3af" stroke-width="1.5" marker-end="url(#arr-gray)"/>
+
+  <!-- Gold -->
+  <rect x="50" y="346" width="200" height="72" fill="#fffbeb" rx="8" stroke="#eab308" stroke-width="1.5"/>
+  <rect x="50" y="346" width="200" height="24" fill="#eab308" rx="8"/>
+  <rect x="50" y="358" width="200" height="12" fill="#eab308"/>
+  <text x="150" y="362" text-anchor="middle" fill="white" font-size="11" font-weight="bold">🥇 Gold</text>
+  <text x="150" y="381" text-anchor="middle" fill="#713f12" font-size="10">df.join() multi-table</text>
+  <text x="150" y="395" text-anchor="middle" fill="#713f12" font-size="10">F.row_number().over()</text>
+  <text x="150" y="409" text-anchor="middle" fill="#713f12" font-size="10">dim_customers / fact_sales</text>
+
+  <!-- Left footer -->
+  <rect x="50" y="438" width="200" height="62" fill="#f8f9fa" rx="6" stroke="#e5e7eb" stroke-width="1"/>
+  <text x="150" y="455" text-anchor="middle" fill="#6b7280" font-size="10">Unity Catalog</text>
+  <text x="150" y="469" text-anchor="middle" fill="#6b7280" font-size="10">Delta Lake storage</text>
+  <text x="150" y="483" text-anchor="middle" fill="#6b7280" font-size="10">Databricks Runtime</text>
+  <text x="150" y="497" text-anchor="middle" fill="#6b7280" font-size="10">spark.sql() / PySpark API</text>
+
+  <!-- ── RIGHT SIDE: ClickZetta / ZettaPark ── -->
+  <rect x="620" y="20" width="260" height="500" fill="#fff" rx="10" stroke="#e0e0e0" stroke-width="1.5"/>
+
+  <!-- Right header -->
+  <rect x="620" y="20" width="260" height="48" fill="#0f4c81" rx="10"/>
+  <rect x="620" y="48" width="260" height="20" fill="#0f4c81"/>
+  <text x="750" y="50" text-anchor="middle" fill="white" font-size="14" font-weight="bold">ClickZetta Lakehouse</text>
+  <text x="750" y="66" text-anchor="middle" fill="#93c5fd" font-size="11">ZettaPark · Internal Volume</text>
+
+  <!-- Volume Source -->
+  <rect x="650" y="90" width="200" height="38" fill="#eff6ff" rx="6" stroke="#bfdbfe" stroke-width="1"/>
+  <text x="750" y="107" text-anchor="middle" fill="#1e3a5f" font-size="11" font-weight="bold">Named Volume</text>
+  <text x="750" y="121" text-anchor="middle" fill="#6b7280" font-size="10">PUT csv → vol://schema.vol/</text>
+
+  <!-- Arrow down -->
+  <line x1="750" y1="128" x2="750" y2="148" stroke="#9ca3af" stroke-width="1.5" marker-end="url(#arr-gray)"/>
+
+  <!-- Bronze -->
+  <rect x="650" y="148" width="200" height="72" fill="#fef3e2" rx="8" stroke="#f59e0b" stroke-width="1.5"/>
+  <rect x="650" y="148" width="200" height="24" fill="#f59e0b" rx="8"/>
+  <rect x="650" y="160" width="200" height="12" fill="#f59e0b"/>
+  <text x="750" y="164" text-anchor="middle" fill="white" font-size="11" font-weight="bold">🥉 Bronze</text>
+  <text x="750" y="183" text-anchor="middle" fill="#92400e" font-size="10">session.read.csv("vol://...")</text>
+  <text x="750" y="197" text-anchor="middle" fill="#92400e" font-size="10">df.write.save_as_table()</text>
+  <text x="750" y="211" text-anchor="middle" fill="#92400e" font-size="10">explicit StructType schema</text>
+
+  <!-- Arrow down -->
+  <line x1="750" y1="220" x2="750" y2="240" stroke="#9ca3af" stroke-width="1.5" marker-end="url(#arr-gray)"/>
+
+  <!-- Silver -->
+  <rect x="650" y="240" width="200" height="86" fill="#f0fdf4" rx="8" stroke="#22c55e" stroke-width="1.5"/>
+  <rect x="650" y="240" width="200" height="24" fill="#22c55e" rx="8"/>
+  <rect x="650" y="252" width="200" height="12" fill="#22c55e"/>
+  <text x="750" y="256" text-anchor="middle" fill="white" font-size="11" font-weight="bold">🥈 Silver</text>
+  <text x="750" y="275" text-anchor="middle" fill="#166534" font-size="10">df.with_column()</text>
+  <text x="750" y="289" text-anchor="middle" fill="#166534" font-size="10">df.drop_duplicates()</text>
+  <text x="750" y="303" text-anchor="middle" fill="#166534" font-size="10">F.when().otherwise()</text>
+  <text x="750" y="317" text-anchor="middle" fill="#166534" font-size="10">Window.partition_by()</text>
+
+  <!-- Arrow down -->
+  <line x1="750" y1="326" x2="750" y2="346" stroke="#9ca3af" stroke-width="1.5" marker-end="url(#arr-gray)"/>
+
+  <!-- Gold -->
+  <rect x="650" y="346" width="200" height="72" fill="#fffbeb" rx="8" stroke="#eab308" stroke-width="1.5"/>
+  <rect x="650" y="346" width="200" height="24" fill="#eab308" rx="8"/>
+  <rect x="650" y="358" width="200" height="12" fill="#eab308"/>
+  <text x="750" y="362" text-anchor="middle" fill="white" font-size="11" font-weight="bold">🥇 Gold</text>
+  <text x="750" y="381" text-anchor="middle" fill="#713f12" font-size="10">df.join() multi-table</text>
+  <text x="750" y="395" text-anchor="middle" fill="#713f12" font-size="10">F.row_number().over()</text>
+  <text x="750" y="409" text-anchor="middle" fill="#713f12" font-size="10">dim_customers / fact_sales</text>
+
+  <!-- Right footer -->
+  <rect x="650" y="438" width="200" height="62" fill="#f8f9fa" rx="6" stroke="#e5e7eb" stroke-width="1"/>
+  <text x="750" y="455" text-anchor="middle" fill="#6b7280" font-size="10">ClickZetta Workspace</text>
+  <text x="750" y="469" text-anchor="middle" fill="#6b7280" font-size="10">Internal Lakehouse storage</text>
+  <text x="750" y="483" text-anchor="middle" fill="#6b7280" font-size="10">ZettaPark Runtime</text>
+  <text x="750" y="497" text-anchor="middle" fill="#6b7280" font-size="10">session.sql() / ZettaPark API</text>
+
+  <!-- ── MIDDLE: Migration Path ── -->
+
+  <!-- Migration panel background -->
+  <rect x="295" y="60" width="310" height="420" fill="#fafafa" rx="10" stroke="#e5e7eb" stroke-width="1" stroke-dasharray="4,3"/>
+
+  <!-- Migration title -->
+  <text x="450" y="88" text-anchor="middle" fill="#374151" font-size="12" font-weight="bold">迁移路径</text>
+
+  <!-- Bronze migration arrow + label -->
+  <line x1="250" y1="184" x2="650" y2="184" stroke="#f59e0b" stroke-width="2" stroke-dasharray="6,3" marker-end="url(#arr-amber)"/>
+  <rect x="310" y="158" width="280" height="52" fill="#fffbeb" rx="6" stroke="#fde68a" stroke-width="1"/>
+  <text x="450" y="174" text-anchor="middle" fill="#92400e" font-size="10" font-weight="bold">Bronze 层迁移</text>
+  <text x="450" y="188" text-anchor="middle" fill="#78350f" font-size="9">路径格式: path → vol://schema.vol/path</text>
+  <text x="450" y="201" text-anchor="middle" fill="#78350f" font-size="9">⚠ 需显式声明 StructType schema</text>
+
+  <!-- Silver migration arrow + label -->
+  <line x1="250" y1="283" x2="650" y2="283" stroke="#22c55e" stroke-width="2" stroke-dasharray="6,3" marker-end="url(#arr-green)"/>
+  <rect x="310" y="255" width="280" height="56" fill="#f0fdf4" rx="6" stroke="#bbf7d0" stroke-width="1"/>
+  <text x="450" y="271" text-anchor="middle" fill="#166534" font-size="10" font-weight="bold">Silver 层迁移</text>
+  <text x="450" y="285" text-anchor="middle" fill="#14532d" font-size="9">withColumn → with_column</text>
+  <text x="450" y="299" text-anchor="middle" fill="#14532d" font-size="9">dropDuplicates → drop_duplicates</text>
+  <text x="450" y="311" text-anchor="middle" fill="#14532d" font-size="9">✅ 业务逻辑零改动</text>
+
+  <!-- Gold migration arrow + label -->
+  <line x1="250" y1="382" x2="650" y2="382" stroke="#eab308" stroke-width="2" stroke-dasharray="6,3" marker-end="url(#arr-yellow)"/>
+  <rect x="310" y="356" width="280" height="52" fill="#fffbeb" rx="6" stroke="#fef08a" stroke-width="1"/>
+  <text x="450" y="372" text-anchor="middle" fill="#713f12" font-size="10" font-weight="bold">Gold 层迁移</text>
+  <text x="450" y="386" text-anchor="middle" fill="#78350f" font-size="9">from pyspark.sql.window import Window</text>
+  <text x="450" y="399" text-anchor="middle" fill="#78350f" font-size="9">→ from clickzetta.zettapark import Window</text>
+
+  <!-- Connection change note -->
+  <rect x="320" y="430" width="260" height="40" fill="#eff6ff" rx="6" stroke="#bfdbfe" stroke-width="1"/>
+  <text x="450" y="446" text-anchor="middle" fill="#1e40af" font-size="10" font-weight="bold">连接方式变更</text>
+  <text x="450" y="460" text-anchor="middle" fill="#1e3a8a" font-size="9">SparkSession → ZettaPark Session + .env</text>
+
+  <!-- Arrowhead markers -->
+  <defs>
+    <marker id="arr-gray" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#9ca3af"/>
+    </marker>
+    <marker id="arr-amber" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#f59e0b"/>
+    </marker>
+    <marker id="arr-green" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#22c55e"/>
+    </marker>
+    <marker id="arr-yellow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#eab308"/>
+    </marker>
+  </defs>
+
+</svg>

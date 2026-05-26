@@ -4,6 +4,10 @@
 
 本项目 fork 自 [DataWithBaraa/databricks_bootcamp_2026](https://github.com/DataWithBaraa/databricks_bootcamp_2026)（MIT License），在保留原始 Databricks Notebook 代码的基础上，新增了对应的 **ClickZetta ZettaPark Python 实现**和**迁移说明文档**。
 
+## 架构对比与迁移路径
+
+![迁移架构图](migration-architecture.svg)
+
 ## 迁移兼容性结论
 
 原始代码使用 PySpark DataFrame API，迁移目标是 **ZettaPark**（ClickZetta 的 Python DataFrame 框架）。
