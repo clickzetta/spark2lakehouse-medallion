@@ -156,19 +156,6 @@
   <!-- dim_products → fact_sales (FK) -->
   <line x1="700" y1="390" x2="700" y2="418" stroke="#eab308" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#arr-amber2)"/>
 
-  <!-- ═══════════════════════════════════════════════════════ -->
-  <!-- KEY DIFFERENCE CALLOUT -->
-  <!-- ═══════════════════════════════════════════════════════ -->
-  <rect x="290" y="72" width="250" height="130" fill="#eff6ff" rx="8" stroke="#bfdbfe" stroke-width="1.5"/>
-  <text x="415" y="90" text-anchor="middle" fill="#1e40af" font-size="10" font-weight="bold">两侧唯一差异</text>
-  <text x="305" y="108" fill="#1e3a8a" font-size="9">表名：完全一致（crm_customers 等）</text>
-  <text x="305" y="121" fill="#1e3a8a" font-size="9">字段：完全一致</text>
-  <text x="305" y="134" fill="#1e3a8a" font-size="9">JOIN 逻辑：完全一致</text>
-  <text x="305" y="147" fill="#1e3a8a" font-size="9">Schema 前缀：完全一致（bronze/silver/gold）</text>
-  <text x="305" y="160" fill="#1e3a8a" font-size="9">inferSchema：两侧均支持自动推断</text>
-  <text x="305" y="173" fill="#dc2626" font-size="9" font-weight="bold">⚠ Window：需从 zettapark.window 单独导入</text>
-  <text x="305" y="186" fill="#6b7280" font-size="9">其余 API 仅命名风格差异（下划线）</text>
-
   <!-- Arrowhead markers -->
   <defs>
     <marker id="arr-green2" markerWidth="7" markerHeight="7" refX="5" refY="3" orient="auto">
