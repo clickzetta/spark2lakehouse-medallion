@@ -17,11 +17,11 @@
 | `F.col() / F.lit() / F.trim()` 等 | 同名函数 | ✅ 完全一致 |
 | `df.filter() / select() / join()` | 同名方法 | ✅ 完全一致 |
 | `df.write.mode("overwrite").saveAsTable(t)` | `df.write.save_as_table(t, mode="overwrite")` | ✅ 参数位置略有调整 |
-| `spark.sql(query)` | `session.sql(query)` | ✅ 完全一致 |
+| `spark.sql(query)` | `session.sql(query)`（本项目未使用，全程 DataFrame API） | ✅ 完全一致 |
 | `F.row_number().over(window)` | `F.row_number().over(Window.order_by(...))` | ✅ Window 需从独立模块导入 |
 | `schema.inferSchema = True` | **不支持**，需显式定义 schema | ⚠️ 需手工声明列名和类型 |
 
-**结论：本项目涉及的 PySpark DataFrame API 全部可迁移到 ZettaPark，无需改写业务逻辑。唯一需要适配的是读取 CSV 时不支持自动推断 schema，需显式声明列名（均为 STRING 即可，类型转换在 Silver 层完成）。**
+**结论：本项目涉及的 PySpark DataFrame API 全部可迁移到 ZettaPark，无需改写业务逻辑，全程使用 DataFrame API（无 SQL 回退）。唯一需要适配的是读取 CSV 时不支持自动推断 schema，需显式声明列名（均为 STRING 即可，类型转换在 Silver 层完成）。**
 
 ## 项目结构
 
@@ -35,14 +35,16 @@
 │   ├── 01_overview.md          迁移策略与关键差异
 │   └── 02_medallion_mapping.md 逐层语法对照
 │
-├── 03_lakehouse/       # ✅ 迁移后的 ClickZetta ZettaPark Python
-│   ├── 01_bronze/      #   bronze.py：从 Volume 读取 CSV → 写入 bronze 表
-│   ├── 02_silver/      #   silver_crm.py / silver_erp.py：清洗 + 标准化
-│   └── 03_gold/        #   gold.py：dim_customers / dim_products / fact_sales
+├── 03_lakehouse/       # ✅ 迁移后的 ClickZetta ZettaPark Notebooks（与 01_spark 一一对应）
+│   ├── init_lakehouse.ipynb    创建 Schema、Volume，上传 CSV 数据集
+│   ├── 01_bronze/              bronze.ipynb：从 Volume 读取 CSV → 写入 bronze 表
+│   ├── 02_silver/              crm/ + erp/ 各 3 个 notebook + orchestration
+│   │   ├── crm/                silver_crm_cust_info / prd_info / sales_details
+│   │   └── erp/                silver_erp_cust_az12 / loc_a101 / px_cat_g1v2
+│   └── 03_gold/                gold_dim_customers / dim_products / fact_sales / orchestration
 │
 ├── datasets/           # 原始数据集（CRM + ERP CSV 文件）
-├── setup.py            # 🚀 一键初始化（创建 Volume、上传数据、执行全流程）
-├── validate.py         # ✔️  迁移验证（22 项数据质量检查）
+├── 04_validate.ipynb      # ✔️  迁移验证（22 项数据质量检查）
 └── .env.sample         # 连接配置模板
 ```
 
@@ -63,17 +65,18 @@
 
 1. 安装依赖：`pip install clickzetta_zettapark_python python-dotenv`
 2. 复制配置：`cp .env.sample .env`，填写 ClickZetta 连接信息
-3. 一键初始化：`python setup.py`
-   - 自动创建 Volume、上传数据集、执行 Bronze → Silver → Gold 全流程
-4. 验证迁移结果：`python validate.py`
-
-或按层单独运行：`python run_lakehouse.py [bronze|silver|gold]`
+3. 按顺序运行 `03_lakehouse/` 下的 notebooks：
+   - `init_lakehouse.ipynb` — 创建 Schema、Volume，上传 CSV 数据集
+   - `01_bronze/bronze.ipynb` — 加载原始数据
+   - `02_silver/silver_orchestration.ipynb` — 清洗全部 Silver 表
+   - `03_gold/gold_orchestration.ipynb` — 构建维度表和事实表
+4. 验证迁移结果：运行 `04_validate.ipynb`
 
 阅读 [迁移概述](02_migration/01_overview.md) 和 [Medallion 架构映射](02_migration/02_medallion_mapping.md) 了解迁移细节。
 
 ## 迁移验证
 
-`validate.py` 对迁移结果执行 22 项自动化检查：
+`04_validate.ipynb` 对迁移结果执行 22 项自动化检查：
 
 | 检查类别 | 内容 |
 |---------|------|
