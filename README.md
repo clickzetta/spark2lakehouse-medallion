@@ -2,7 +2,26 @@
 
 > **Spark SQL → ClickZetta Lakehouse 迁移示例**
 
-本项目 fork 自 [DataWithBaraa/databricks_bootcamp_2026](https://github.com/DataWithBaraa/databricks_bootcamp_2026)（MIT License），在保留原始 Databricks Notebook 代码的基础上，新增了对应的 **ClickZetta ZettaPark Python 实现**和**迁移说明文档**。原始代码使用 PySpark DataFrame API，迁移后使用 ZettaPark（ClickZetta 的 Python DataFrame 框架），API 几乎一一对应。
+本项目 fork 自 [DataWithBaraa/databricks_bootcamp_2026](https://github.com/DataWithBaraa/databricks_bootcamp_2026)（MIT License），在保留原始 Databricks Notebook 代码的基础上，新增了对应的 **ClickZetta ZettaPark Python 实现**和**迁移说明文档**。
+
+## 迁移兼容性结论
+
+原始代码使用 PySpark DataFrame API，迁移目标是 **ZettaPark**（ClickZetta 的 Python DataFrame 框架）。
+
+| PySpark 用法 | ZettaPark 等价写法 | 兼容性 |
+|-------------|------------------|--------|
+| `spark.read.csv(path)` | `session.read.csv("vol://schema.vol/path")` | ✅ 直接替换，路径格式不同 |
+| `df.withColumn(name, expr)` | `df.with_column(name, expr)` | ✅ 仅命名风格差异（下划线） |
+| `df.withColumnRenamed(old, new)` | `df.with_column_renamed(old, new)` | ✅ 同上 |
+| `F.when().otherwise()` | `F.when().otherwise()` | ✅ 完全一致 |
+| `F.col() / F.lit() / F.trim()` 等 | 同名函数 | ✅ 完全一致 |
+| `df.filter() / select() / join()` | 同名方法 | ✅ 完全一致 |
+| `df.write.mode("overwrite").saveAsTable(t)` | `df.write.save_as_table(t, mode="overwrite")` | ✅ 参数位置略有调整 |
+| `spark.sql(query)` | `session.sql(query)` | ✅ 完全一致 |
+| `F.row_number().over(window)` | `F.row_number().over(Window.order_by(...))` | ✅ Window 需从独立模块导入 |
+| `schema.inferSchema = True` | **不支持**，需显式定义 schema | ⚠️ 需手工声明列名和类型 |
+
+**结论：本项目涉及的 PySpark DataFrame API 全部可迁移到 ZettaPark，无需改写业务逻辑。唯一需要适配的是读取 CSV 时不支持自动推断 schema，需显式声明列名（均为 STRING 即可，类型转换在 Silver 层完成）。**
 
 ## 项目结构
 
