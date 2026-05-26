@@ -60,6 +60,10 @@
 | Silver | 清洗、去重、标准化 | PySpark DataFrame 转换 | ZettaPark `with_column()` + `F.when()` |
 | Gold | 维度建模（dim/fact） | PySpark join + 聚合 | ZettaPark `df.join()` + `F.row_number()` |
 
+### Gold 层数据模型映射
+
+![数据模型映射](data-model-mapping.svg)
+
 ## 数据源
 
 - **CRM 系统**：客户信息（cust_info）、产品信息（prd_info）、销售明细（sales_details）

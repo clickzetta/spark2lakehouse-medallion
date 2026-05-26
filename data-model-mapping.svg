@@ -1,0 +1,182 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 620" font-family="'Segoe UI', Arial, sans-serif">
+
+  <!-- Background -->
+  <rect width="1000" height="620" fill="#f8f9fa" rx="12"/>
+
+  <!-- Title -->
+  <text x="500" y="32" text-anchor="middle" fill="#111827" font-size="15" font-weight="bold">Medallion 数据模型映射：PySpark (Databricks) → ZettaPark (ClickZetta)</text>
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!-- SILVER LAYER (left) -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <text x="130" y="62" text-anchor="middle" fill="#166534" font-size="12" font-weight="bold">🥈 Silver 层（共享）</text>
+
+  <!-- crm_customers -->
+  <rect x="20" y="72" width="220" height="110" fill="#f0fdf4" rx="7" stroke="#22c55e" stroke-width="1.5"/>
+  <rect x="20" y="72" width="220" height="22" fill="#22c55e" rx="7"/>
+  <rect x="20" y="82" width="220" height="12" fill="#22c55e"/>
+  <text x="130" y="87" text-anchor="middle" fill="white" font-size="10" font-weight="bold">crm_customers</text>
+  <text x="130" y="104" text-anchor="middle" fill="#166534" font-size="9">customer_id  · customer_number</text>
+  <text x="130" y="116" text-anchor="middle" fill="#166534" font-size="9">first_name · last_name</text>
+  <text x="130" y="128" text-anchor="middle" fill="#166534" font-size="9">marital_status · gender</text>
+  <text x="130" y="140" text-anchor="middle" fill="#166534" font-size="9">created_date</text>
+  <text x="130" y="152" text-anchor="middle" fill="#166534" font-size="9">← crm_cust_info (bronze)</text>
+  <text x="130" y="164" text-anchor="middle" fill="#9ca3af" font-size="8">PySpark: silver.crm_customers</text>
+  <text x="130" y="175" text-anchor="middle" fill="#9ca3af" font-size="8">ZettaPark: public.crm_customers</text>
+
+  <!-- erp_customers -->
+  <rect x="20" y="196" width="220" height="96" fill="#f0fdf4" rx="7" stroke="#22c55e" stroke-width="1.5"/>
+  <rect x="20" y="196" width="220" height="22" fill="#22c55e" rx="7"/>
+  <rect x="20" y="206" width="220" height="12" fill="#22c55e"/>
+  <text x="130" y="211" text-anchor="middle" fill="white" font-size="10" font-weight="bold">erp_customers</text>
+  <text x="130" y="228" text-anchor="middle" fill="#166534" font-size="9">customer_number</text>
+  <text x="130" y="240" text-anchor="middle" fill="#166534" font-size="9">birth_date · gender</text>
+  <text x="130" y="252" text-anchor="middle" fill="#166534" font-size="9">← erp_cust_az12 (bronze)</text>
+  <text x="130" y="264" text-anchor="middle" fill="#9ca3af" font-size="8">PySpark: silver.erp_customers</text>
+  <text x="130" y="275" text-anchor="middle" fill="#9ca3af" font-size="8">ZettaPark: public.erp_customers</text>
+
+  <!-- erp_customer_location -->
+  <rect x="20" y="306" width="220" height="82" fill="#f0fdf4" rx="7" stroke="#22c55e" stroke-width="1.5"/>
+  <rect x="20" y="306" width="220" height="22" fill="#22c55e" rx="7"/>
+  <rect x="20" y="316" width="220" height="12" fill="#22c55e"/>
+  <text x="130" y="321" text-anchor="middle" fill="white" font-size="10" font-weight="bold">erp_customer_location</text>
+  <text x="130" y="338" text-anchor="middle" fill="#166534" font-size="9">customer_number · country</text>
+  <text x="130" y="350" text-anchor="middle" fill="#166534" font-size="9">← erp_loc_a101 (bronze)</text>
+  <text x="130" y="362" text-anchor="middle" fill="#9ca3af" font-size="8">PySpark: silver.erp_customer_location</text>
+  <text x="130" y="373" text-anchor="middle" fill="#9ca3af" font-size="8">ZettaPark: public.erp_customer_location</text>
+
+  <!-- crm_products -->
+  <rect x="20" y="402" width="220" height="96" fill="#f0fdf4" rx="7" stroke="#22c55e" stroke-width="1.5"/>
+  <rect x="20" y="402" width="220" height="22" fill="#22c55e" rx="7"/>
+  <rect x="20" y="412" width="220" height="12" fill="#22c55e"/>
+  <text x="130" y="417" text-anchor="middle" fill="white" font-size="10" font-weight="bold">crm_products</text>
+  <text x="130" y="434" text-anchor="middle" fill="#166534" font-size="9">product_id · product_number</text>
+  <text x="130" y="446" text-anchor="middle" fill="#166534" font-size="9">product_name · category_id</text>
+  <text x="130" y="458" text-anchor="middle" fill="#166534" font-size="9">product_line · start_date · end_date</text>
+  <text x="130" y="470" text-anchor="middle" fill="#9ca3af" font-size="8">PySpark: silver.crm_products</text>
+  <text x="130" y="481" text-anchor="middle" fill="#9ca3af" font-size="8">ZettaPark: public.crm_products</text>
+
+  <!-- erp_product_category -->
+  <rect x="20" y="512" width="220" height="82" fill="#f0fdf4" rx="7" stroke="#22c55e" stroke-width="1.5"/>
+  <rect x="20" y="512" width="220" height="22" fill="#22c55e" rx="7"/>
+  <rect x="20" y="522" width="220" height="12" fill="#22c55e"/>
+  <text x="130" y="527" text-anchor="middle" fill="white" font-size="10" font-weight="bold">erp_product_category</text>
+  <text x="130" y="544" text-anchor="middle" fill="#166534" font-size="9">category_id · category</text>
+  <text x="130" y="556" text-anchor="middle" fill="#166534" font-size="9">subcategory · maintenance_flag</text>
+  <text x="130" y="568" text-anchor="middle" fill="#9ca3af" font-size="8">PySpark: silver.erp_product_category</text>
+  <text x="130" y="579" text-anchor="middle" fill="#9ca3af" font-size="8">ZettaPark: public.erp_product_category</text>
+
+  <!-- crm_sales -->
+  <!-- (shown in fact section) -->
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!-- GOLD LAYER (right) — Star Schema -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <text x="700" y="62" text-anchor="middle" fill="#713f12" font-size="12" font-weight="bold">🥇 Gold 层（星型模型）</text>
+
+  <!-- dim_customers -->
+  <rect x="560" y="72" width="230" height="148" fill="#fffbeb" rx="7" stroke="#eab308" stroke-width="2"/>
+  <rect x="560" y="72" width="230" height="22" fill="#eab308" rx="7"/>
+  <rect x="560" y="82" width="230" height="12" fill="#eab308"/>
+  <text x="675" y="87" text-anchor="middle" fill="white" font-size="10" font-weight="bold">dim_customers</text>
+  <text x="580" y="106" fill="#713f12" font-size="9">🔑 customer_key  (surrogate, ROW_NUMBER)</text>
+  <text x="580" y="119" fill="#713f12" font-size="9">   customer_id · customer_number</text>
+  <text x="580" y="131" fill="#713f12" font-size="9">   first_name · last_name</text>
+  <text x="580" y="143" fill="#713f12" font-size="9">   country · marital_status · gender</text>
+  <text x="580" y="155" fill="#713f12" font-size="9">   birthdate · create_date</text>
+  <text x="580" y="170" fill="#9ca3af" font-size="8">PySpark: workspace.gold.dim_customers</text>
+  <text x="580" y="181" fill="#9ca3af" font-size="8">ZettaPark: public.dim_customers</text>
+  <text x="580" y="193" fill="#6b7280" font-size="8">JOIN: crm_customers ⟕ erp_customers ⟕ erp_customer_location</text>
+  <text x="580" y="205" fill="#6b7280" font-size="8">      on customer_number</text>
+
+  <!-- dim_products -->
+  <rect x="560" y="240" width="230" height="148" fill="#fffbeb" rx="7" stroke="#eab308" stroke-width="2"/>
+  <rect x="560" y="240" width="230" height="22" fill="#eab308" rx="7"/>
+  <rect x="560" y="250" width="230" height="12" fill="#eab308"/>
+  <text x="675" y="255" text-anchor="middle" fill="white" font-size="10" font-weight="bold">dim_products</text>
+  <text x="580" y="274" fill="#713f12" font-size="9">🔑 product_key  (surrogate, ROW_NUMBER)</text>
+  <text x="580" y="286" fill="#713f12" font-size="9">   product_id · product_number</text>
+  <text x="580" y="298" fill="#713f12" font-size="9">   product_name · category_id</text>
+  <text x="580" y="310" fill="#713f12" font-size="9">   category · subcategory</text>
+  <text x="580" y="322" fill="#713f12" font-size="9">   maintenance_flag · product_line · start_date</text>
+  <text x="580" y="337" fill="#9ca3af" font-size="8">PySpark: workspace.gold.dim_products</text>
+  <text x="580" y="348" fill="#9ca3af" font-size="8">ZettaPark: public.dim_products</text>
+  <text x="580" y="360" fill="#6b7280" font-size="8">JOIN: crm_products ⟕ erp_product_category</text>
+  <text x="580" y="372" fill="#6b7280" font-size="8">      on category_id</text>
+
+  <!-- fact_sales (center-bottom) -->
+  <rect x="560" y="420" width="230" height="162" fill="#fef2f2" rx="7" stroke="#ef4444" stroke-width="2"/>
+  <rect x="560" y="420" width="230" height="22" fill="#ef4444" rx="7"/>
+  <rect x="560" y="430" width="230" height="12" fill="#ef4444"/>
+  <text x="675" y="435" text-anchor="middle" fill="white" font-size="10" font-weight="bold">fact_sales</text>
+  <text x="580" y="454" fill="#7f1d1d" font-size="9">🔗 product_key  → dim_products</text>
+  <text x="580" y="466" fill="#7f1d1d" font-size="9">🔗 customer_key → dim_customers</text>
+  <text x="580" y="478" fill="#7f1d1d" font-size="9">   order_number · order_date</text>
+  <text x="580" y="490" fill="#7f1d1d" font-size="9">   ship_date · due_date</text>
+  <text x="580" y="502" fill="#7f1d1d" font-size="9">   sales_amount · quantity · price</text>
+  <text x="580" y="517" fill="#9ca3af" font-size="8">PySpark: workspace.gold.fact_sales</text>
+  <text x="580" y="528" fill="#9ca3af" font-size="8">ZettaPark: public.fact_sales</text>
+  <text x="580" y="540" fill="#6b7280" font-size="8">JOIN: crm_sales ⟕ dim_products (product_number)</text>
+  <text x="580" y="552" fill="#6b7280" font-size="8">             ⟕ dim_customers (customer_id)</text>
+
+  <!-- crm_sales silver box (bottom-left) -->
+  <rect x="20" y="608" width="220" height="0" fill="none"/>
+  <!-- inline crm_sales near fact -->
+  <rect x="800" y="420" width="180" height="96" fill="#f0fdf4" rx="7" stroke="#22c55e" stroke-width="1.5"/>
+  <rect x="800" y="420" width="180" height="22" fill="#22c55e" rx="7"/>
+  <rect x="800" y="430" width="180" height="12" fill="#22c55e"/>
+  <text x="890" y="435" text-anchor="middle" fill="white" font-size="10" font-weight="bold">crm_sales (silver)</text>
+  <text x="890" y="452" text-anchor="middle" fill="#166534" font-size="9">order_number · product_number</text>
+  <text x="890" y="464" text-anchor="middle" fill="#166534" font-size="9">customer_id · order_date</text>
+  <text x="890" y="476" text-anchor="middle" fill="#166534" font-size="9">sales_amount · quantity · price</text>
+  <text x="890" y="490" text-anchor="middle" fill="#9ca3af" font-size="8">← crm_sales_details (bronze)</text>
+  <text x="890" y="501" text-anchor="middle" fill="#9ca3af" font-size="8">public.crm_sales</text>
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!-- JOIN ARROWS: Silver → Gold -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+
+  <!-- crm_customers → dim_customers -->
+  <line x1="240" y1="127" x2="558" y2="140" stroke="#22c55e" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#arr-green2)"/>
+  <!-- erp_customers → dim_customers -->
+  <line x1="240" y1="244" x2="558" y2="165" stroke="#22c55e" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#arr-green2)"/>
+  <!-- erp_customer_location → dim_customers -->
+  <line x1="240" y1="347" x2="558" y2="185" stroke="#22c55e" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#arr-green2)"/>
+
+  <!-- crm_products → dim_products -->
+  <line x1="240" y1="450" x2="558" y2="310" stroke="#22c55e" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#arr-green2)"/>
+  <!-- erp_product_category → dim_products -->
+  <line x1="240" y1="556" x2="558" y2="340" stroke="#22c55e" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#arr-green2)"/>
+
+  <!-- crm_sales → fact_sales -->
+  <line x1="800" y1="468" x2="792" y2="490" stroke="#22c55e" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#arr-green2)"/>
+
+  <!-- dim_customers → fact_sales (FK) -->
+  <line x1="675" y1="222" x2="675" y2="418" stroke="#eab308" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#arr-amber2)"/>
+  <!-- dim_products → fact_sales (FK) -->
+  <line x1="700" y1="390" x2="700" y2="418" stroke="#eab308" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#arr-amber2)"/>
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!-- KEY DIFFERENCE CALLOUT -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <rect x="290" y="72" width="250" height="130" fill="#eff6ff" rx="8" stroke="#bfdbfe" stroke-width="1.5"/>
+  <text x="415" y="90" text-anchor="middle" fill="#1e40af" font-size="10" font-weight="bold">两侧唯一差异</text>
+  <text x="305" y="108" fill="#1e3a8a" font-size="9">表名：完全一致（crm_customers 等）</text>
+  <text x="305" y="121" fill="#1e3a8a" font-size="9">字段：完全一致</text>
+  <text x="305" y="134" fill="#1e3a8a" font-size="9">JOIN 逻辑：完全一致</text>
+  <text x="305" y="147" fill="#1e3a8a" font-size="9">Schema 前缀：silver.xxx → public.xxx</text>
+  <text x="305" y="160" fill="#dc2626" font-size="9" font-weight="bold">⚠ Bronze 读取：需显式 StructType schema</text>
+  <text x="305" y="173" fill="#dc2626" font-size="9" font-weight="bold">⚠ Window：需从 zettapark 单独导入</text>
+  <text x="305" y="186" fill="#6b7280" font-size="9">其余 API 仅命名风格差异（下划线）</text>
+
+  <!-- Arrowhead markers -->
+  <defs>
+    <marker id="arr-green2" markerWidth="7" markerHeight="7" refX="5" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L7,3 z" fill="#22c55e"/>
+    </marker>
+    <marker id="arr-amber2" markerWidth="7" markerHeight="7" refX="5" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L7,3 z" fill="#eab308"/>
+    </marker>
+  </defs>
+
+</svg>
