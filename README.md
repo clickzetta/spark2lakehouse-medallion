@@ -7,19 +7,23 @@
 ## 项目结构
 
 ```
+├── spark/              # 📦 原始 Databricks Notebooks（PySpark，只读参考）
+│   ├── bronze/         #   Bronze 层：spark.read.csv() → Delta 写入
+│   ├── silver/         #   Silver 层：DataFrame filter/withColumn/dropDuplicates
+│   └── gold/           #   Gold 层：DataFrame join + 聚合
+│
+├── lakehouse/          # ✅ 迁移后的 ClickZetta Lakehouse SQL
+│   ├── bronze/         #   COPY INTO 替代 spark.read.csv()
+│   ├── silver/         #   INSERT OVERWRITE + QUALIFY 替代 dropDuplicates()
+│   └── gold/           #   纯 SQL 维度表 + 事实表
+│
+├── migration/          # 📖 迁移说明文档
+│   ├── 01_overview.md          迁移策略与关键差异
+│   └── 02_medallion_mapping.md 逐层语法对照
+│
 ├── datasets/           # 原始数据集（CRM + ERP CSV 文件）
-├── script/             # 原始 Databricks Notebooks（PySpark）
-│   ├── bronze/         #   Bronze 层：原始数据摄取
-│   ├── silver/         #   Silver 层：数据清洗与标准化
-│   └── gold/           #   Gold 层：维度建模
-├── lakehouse/          # ✅ Lakehouse 实现（ClickZetta SQL）
-│   ├── bronze/         #   Bronze 层 SQL
-│   ├── silver/         #   Silver 层 SQL
-│   └── gold/           #   Gold 层 SQL
-└── migration/          # ✅ 迁移说明文档
-    ├── 01_overview.md
-    ├── 02_medallion_mapping.md
-    └── 03_step_by_step.md
+├── setup.py            # 🚀 一键初始化（创建 Volume、上传数据、执行 SQL）
+└── .env.sample         # 连接配置模板
 ```
 
 ## 数据架构
