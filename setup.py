@@ -40,7 +40,7 @@ VOLUME_PATH   = f"/Volumes/quick_start/{SCHEMA_NAME}/{VOLUME_NAME}"
 DATASETS_DIR  = Path(__file__).parent / "datasets" / "engineering"
 LAKEHOUSE_DIR = Path(__file__).parent / "lakehouse"
 
-SQL_LAYERS = ["bronze", "silver", "gold"]
+SQL_LAYERS = ["01_bronze", "02_silver", "03_gold"]
 
 # ── 连接 ────────────────────────────────────────────────────────────────────
 

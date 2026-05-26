@@ -8,14 +8,14 @@
 
 ```
 ├── spark/              # 📦 原始 Databricks Notebooks（PySpark，只读参考）
-│   ├── bronze/         #   Bronze 层：spark.read.csv() → Delta 写入
-│   ├── silver/         #   Silver 层：DataFrame filter/withColumn/dropDuplicates
-│   └── gold/           #   Gold 层：DataFrame join + 聚合
+│   ├── 01_bronze/      #   Bronze 层：spark.read.csv() → Delta 写入
+│   ├── 02_silver/      #   Silver 层：DataFrame filter/withColumn/dropDuplicates
+│   └── 03_gold/        #   Gold 层：DataFrame join + 聚合
 │
 ├── lakehouse/          # ✅ 迁移后的 ClickZetta Lakehouse SQL
-│   ├── bronze/         #   COPY INTO 替代 spark.read.csv()
-│   ├── silver/         #   INSERT OVERWRITE + QUALIFY 替代 dropDuplicates()
-│   └── gold/           #   纯 SQL 维度表 + 事实表
+│   ├── 01_bronze/      #   COPY INTO 替代 spark.read.csv()
+│   ├── 02_silver/      #   INSERT OVERWRITE + QUALIFY 替代 dropDuplicates()
+│   └── 03_gold/        #   纯 SQL 维度表 + 事实表
 │
 ├── migration/          # 📖 迁移说明文档
 │   ├── 01_overview.md          迁移策略与关键差异
