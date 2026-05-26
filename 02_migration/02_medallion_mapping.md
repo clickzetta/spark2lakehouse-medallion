@@ -48,7 +48,7 @@ window = Window.partitionBy("cid").orderBy(F.col("cst_create_date").desc())
 df.withColumn("flag", F.row_number().over(window)).filter(F.col("flag") == 1)
 
 # ZettaPark
-from clickzetta.zettapark import Window
+from clickzetta.zettapark.window import Window
 window = Window.partition_by("cid").order_by(F.col("cst_create_date").desc())
 df.with_column("flag", F.row_number().over(window)).filter(F.col("flag") == 1)
 ```
