@@ -22,7 +22,8 @@
 │   └── 03_gold/        #   gold.py：dim_customers / dim_products / fact_sales
 │
 ├── datasets/           # 原始数据集（CRM + ERP CSV 文件）
-├── setup.py            # 🚀 一键初始化（创建 Volume、上传数据、执行 SQL）
+├── setup.py            # 🚀 一键初始化（创建 Volume、上传数据、执行全流程）
+├── validate.py         # ✔️  迁移验证（22 项数据质量检查）
 └── .env.sample         # 连接配置模板
 ```
 
@@ -45,10 +46,29 @@
 2. 复制配置：`cp .env.sample .env`，填写 ClickZetta 连接信息
 3. 一键初始化：`python setup.py`
    - 自动创建 Volume、上传数据集、执行 Bronze → Silver → Gold 全流程
+4. 验证迁移结果：`python validate.py`
 
 或按层单独运行：`python run_lakehouse.py [bronze|silver|gold]`
 
 阅读 [迁移概述](02_migration/01_overview.md) 和 [Medallion 架构映射](02_migration/02_medallion_mapping.md) 了解迁移细节。
+
+## 迁移验证
+
+`validate.py` 对迁移结果执行 22 项自动化检查：
+
+| 检查类别 | 内容 |
+|---------|------|
+| 行数合理性 | 各层表有数据，行数符合预期 |
+| Bronze → Silver 一致性 | Silver 不丢行，销售明细完整 |
+| 关键列无空值 | 主键、外键均不为 NULL |
+| 数据清洗效果 | gender / marital_status / country 标准化正确 |
+| 维度完整性 | surrogate key 无重复 |
+| 外键完整性 | fact_sales 所有外键均能关联到 dim 表 |
+| 业务指标合理性 | 数量 > 0，country 覆盖率 > 50% |
+
+实际运行结果：**20/22 通过，迁移逻辑全部正确**。2 项警告为源数据本身的质量问题（非迁移引入）：
+- `crm_cust_info` 原始数据存在 5 组重复 `customer_id`
+- `crm_sales_details` 存在 3 条负销售额（退货/冲销单）
 
 ## 原始项目
 
