@@ -22,10 +22,11 @@
 | `df.filter() / select() / join()` | 同名方法 | ✅ 完全一致 |
 | `df.write.mode("overwrite").saveAsTable(t)` | `df.write.save_as_table(t, mode="overwrite")` | ✅ 参数位置略有调整 |
 | `spark.sql(query)` | `session.sql(query)`（本项目未使用，全程 DataFrame API） | ✅ 完全一致 |
-| `F.row_number().over(window)` | `F.row_number().over(Window.order_by(...))` | ✅ Window 需从独立模块导入 |
-| `schema.inferSchema = True` | **不支持**，需显式定义 schema | ⚠️ 需手工声明列名和类型 |
+| `F.row_number().over(window)` | `F.row_number().over(Window.order_by(...))` | ✅ 完全一致，导入路径略有不同 |
+| `from pyspark.sql.window import Window` | `from clickzetta.zettapark.window import Window` | ✅ 模块路径不同，用法完全一致 |
+| `schema.inferSchema = True` | `session.read.option("header","true").csv(path)` | ✅ 支持自动推断，无需显式声明 |
 
-**结论：本项目涉及的 PySpark DataFrame API 全部可迁移到 ZettaPark，无需改写业务逻辑，全程使用 DataFrame API（无 SQL 回退）。唯一需要适配的是读取 CSV 时不支持自动推断 schema，需显式声明列名（均为 STRING 即可，类型转换在 Silver 层完成）。**
+**结论：本项目涉及的 PySpark DataFrame API 全部可迁移到 ZettaPark，无需改写任何业务逻辑，全程使用 DataFrame API（无 SQL 回退）。两侧代码结构完全对称，差异仅限于：连接方式（SparkSession → ZettaPark Session）、CSV 路径格式（本地/DBFS → `vol://`）、Window 模块导入路径，以及方法命名风格（camelCase → snake_case）。**
 
 ## 项目结构
 

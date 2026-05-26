@@ -22,7 +22,7 @@
   <text x="130" y="140" text-anchor="middle" fill="#166534" font-size="9">created_date</text>
   <text x="130" y="152" text-anchor="middle" fill="#166534" font-size="9">← crm_cust_info (bronze)</text>
   <text x="130" y="164" text-anchor="middle" fill="#9ca3af" font-size="8">PySpark: silver.crm_customers</text>
-  <text x="130" y="175" text-anchor="middle" fill="#9ca3af" font-size="8">ZettaPark: public.crm_customers</text>
+  <text x="130" y="175" text-anchor="middle" fill="#9ca3af" font-size="8">ZettaPark: silver.crm_customers</text>
 
   <!-- erp_customers -->
   <rect x="20" y="196" width="220" height="96" fill="#f0fdf4" rx="7" stroke="#22c55e" stroke-width="1.5"/>
@@ -33,7 +33,7 @@
   <text x="130" y="240" text-anchor="middle" fill="#166534" font-size="9">birth_date · gender</text>
   <text x="130" y="252" text-anchor="middle" fill="#166534" font-size="9">← erp_cust_az12 (bronze)</text>
   <text x="130" y="264" text-anchor="middle" fill="#9ca3af" font-size="8">PySpark: silver.erp_customers</text>
-  <text x="130" y="275" text-anchor="middle" fill="#9ca3af" font-size="8">ZettaPark: public.erp_customers</text>
+  <text x="130" y="275" text-anchor="middle" fill="#9ca3af" font-size="8">ZettaPark: silver.erp_customers</text>
 
   <!-- erp_customer_location -->
   <rect x="20" y="306" width="220" height="82" fill="#f0fdf4" rx="7" stroke="#22c55e" stroke-width="1.5"/>
@@ -43,7 +43,7 @@
   <text x="130" y="338" text-anchor="middle" fill="#166534" font-size="9">customer_number · country</text>
   <text x="130" y="350" text-anchor="middle" fill="#166534" font-size="9">← erp_loc_a101 (bronze)</text>
   <text x="130" y="362" text-anchor="middle" fill="#9ca3af" font-size="8">PySpark: silver.erp_customer_location</text>
-  <text x="130" y="373" text-anchor="middle" fill="#9ca3af" font-size="8">ZettaPark: public.erp_customer_location</text>
+  <text x="130" y="373" text-anchor="middle" fill="#9ca3af" font-size="8">ZettaPark: silver.erp_customer_location</text>
 
   <!-- crm_products -->
   <rect x="20" y="402" width="220" height="96" fill="#f0fdf4" rx="7" stroke="#22c55e" stroke-width="1.5"/>
@@ -54,7 +54,7 @@
   <text x="130" y="446" text-anchor="middle" fill="#166534" font-size="9">product_name · category_id</text>
   <text x="130" y="458" text-anchor="middle" fill="#166534" font-size="9">product_line · start_date · end_date</text>
   <text x="130" y="470" text-anchor="middle" fill="#9ca3af" font-size="8">PySpark: silver.crm_products</text>
-  <text x="130" y="481" text-anchor="middle" fill="#9ca3af" font-size="8">ZettaPark: public.crm_products</text>
+  <text x="130" y="481" text-anchor="middle" fill="#9ca3af" font-size="8">ZettaPark: silver.crm_products</text>
 
   <!-- erp_product_category -->
   <rect x="20" y="512" width="220" height="82" fill="#f0fdf4" rx="7" stroke="#22c55e" stroke-width="1.5"/>
@@ -64,7 +64,7 @@
   <text x="130" y="544" text-anchor="middle" fill="#166534" font-size="9">category_id · category</text>
   <text x="130" y="556" text-anchor="middle" fill="#166534" font-size="9">subcategory · maintenance_flag</text>
   <text x="130" y="568" text-anchor="middle" fill="#9ca3af" font-size="8">PySpark: silver.erp_product_category</text>
-  <text x="130" y="579" text-anchor="middle" fill="#9ca3af" font-size="8">ZettaPark: public.erp_product_category</text>
+  <text x="130" y="579" text-anchor="middle" fill="#9ca3af" font-size="8">ZettaPark: silver.erp_product_category</text>
 
   <!-- crm_sales -->
   <!-- (shown in fact section) -->
@@ -85,7 +85,7 @@
   <text x="580" y="143" fill="#713f12" font-size="9">   country · marital_status · gender</text>
   <text x="580" y="155" fill="#713f12" font-size="9">   birthdate · create_date</text>
   <text x="580" y="170" fill="#9ca3af" font-size="8">PySpark: workspace.gold.dim_customers</text>
-  <text x="580" y="181" fill="#9ca3af" font-size="8">ZettaPark: public.dim_customers</text>
+  <text x="580" y="181" fill="#9ca3af" font-size="8">ZettaPark: gold.dim_customers</text>
   <text x="580" y="193" fill="#6b7280" font-size="8">JOIN: crm_customers ⟕ erp_customers ⟕ erp_customer_location</text>
   <text x="580" y="205" fill="#6b7280" font-size="8">      on customer_number</text>
 
@@ -100,7 +100,7 @@
   <text x="580" y="310" fill="#713f12" font-size="9">   category · subcategory</text>
   <text x="580" y="322" fill="#713f12" font-size="9">   maintenance_flag · product_line · start_date</text>
   <text x="580" y="337" fill="#9ca3af" font-size="8">PySpark: workspace.gold.dim_products</text>
-  <text x="580" y="348" fill="#9ca3af" font-size="8">ZettaPark: public.dim_products</text>
+  <text x="580" y="348" fill="#9ca3af" font-size="8">ZettaPark: gold.dim_products</text>
   <text x="580" y="360" fill="#6b7280" font-size="8">JOIN: crm_products ⟕ erp_product_category</text>
   <text x="580" y="372" fill="#6b7280" font-size="8">      on category_id</text>
 
@@ -115,7 +115,7 @@
   <text x="580" y="490" fill="#7f1d1d" font-size="9">   ship_date · due_date</text>
   <text x="580" y="502" fill="#7f1d1d" font-size="9">   sales_amount · quantity · price</text>
   <text x="580" y="517" fill="#9ca3af" font-size="8">PySpark: workspace.gold.fact_sales</text>
-  <text x="580" y="528" fill="#9ca3af" font-size="8">ZettaPark: public.fact_sales</text>
+  <text x="580" y="528" fill="#9ca3af" font-size="8">ZettaPark: gold.fact_sales</text>
   <text x="580" y="540" fill="#6b7280" font-size="8">JOIN: crm_sales ⟕ dim_products (product_number)</text>
   <text x="580" y="552" fill="#6b7280" font-size="8">             ⟕ dim_customers (customer_id)</text>
 
@@ -130,7 +130,7 @@
   <text x="890" y="464" text-anchor="middle" fill="#166534" font-size="9">customer_id · order_date</text>
   <text x="890" y="476" text-anchor="middle" fill="#166534" font-size="9">sales_amount · quantity · price</text>
   <text x="890" y="490" text-anchor="middle" fill="#9ca3af" font-size="8">← crm_sales_details (bronze)</text>
-  <text x="890" y="501" text-anchor="middle" fill="#9ca3af" font-size="8">public.crm_sales</text>
+  <text x="890" y="501" text-anchor="middle" fill="#9ca3af" font-size="8">silver.crm_sales</text>
 
   <!-- ═══════════════════════════════════════════════════════ -->
   <!-- JOIN ARROWS: Silver → Gold -->
@@ -164,9 +164,9 @@
   <text x="305" y="108" fill="#1e3a8a" font-size="9">表名：完全一致（crm_customers 等）</text>
   <text x="305" y="121" fill="#1e3a8a" font-size="9">字段：完全一致</text>
   <text x="305" y="134" fill="#1e3a8a" font-size="9">JOIN 逻辑：完全一致</text>
-  <text x="305" y="147" fill="#1e3a8a" font-size="9">Schema 前缀：silver.xxx → public.xxx</text>
-  <text x="305" y="160" fill="#dc2626" font-size="9" font-weight="bold">⚠ Bronze 读取：需显式 StructType schema</text>
-  <text x="305" y="173" fill="#dc2626" font-size="9" font-weight="bold">⚠ Window：需从 zettapark 单独导入</text>
+  <text x="305" y="147" fill="#1e3a8a" font-size="9">Schema 前缀：完全一致（bronze/silver/gold）</text>
+  <text x="305" y="160" fill="#1e3a8a" font-size="9">inferSchema：两侧均支持自动推断</text>
+  <text x="305" y="173" fill="#dc2626" font-size="9" font-weight="bold">⚠ Window：需从 zettapark.window 单独导入</text>
   <text x="305" y="186" fill="#6b7280" font-size="9">其余 API 仅命名风格差异（下划线）</text>
 
   <!-- Arrowhead markers -->
