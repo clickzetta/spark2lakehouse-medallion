@@ -42,9 +42,9 @@ TABLES = {
 }
 
 
-def run(session: Session, volume_uri_base: str, schema: str = "mcp_demo"):
+def run(session: Session, volume_uri_base: str, schema: str):
     """
-    volume_uri_base: e.g. "vol://mcp_demo.medallion_vol"
+    volume_uri_base: e.g. "vol://your_schema.medallion_vol"
     """
     for csv_rel, table_name in TABLES.items():
         csv_path = f"{volume_uri_base}/{csv_rel}"

@@ -19,8 +19,14 @@ except ImportError:
     print("Install: pip install clickzetta_zettapark_python python-dotenv")
     sys.exit(1)
 
-SCHEMA_NAME = "mcp_demo"
-VOLUME_URI_BASE = f"vol://{SCHEMA_NAME}.medallion_vol"
+SCHEMA_NAME = os.environ.get("CLICKZETTA_SCHEMA", "")
+VOLUME_NAME = os.environ.get("CLICKZETTA_VOLUME", "medallion_vol")
+
+if not SCHEMA_NAME:
+    print("[ERROR] .env 缺少 CLICKZETTA_SCHEMA，请填写目标 schema 名称")
+    sys.exit(1)
+
+VOLUME_URI_BASE = f"vol://{SCHEMA_NAME}.{VOLUME_NAME}"
 
 BASE = Path(__file__).parent / "03_lakehouse"
 

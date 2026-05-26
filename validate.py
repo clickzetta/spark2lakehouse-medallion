@@ -27,7 +27,12 @@ except ImportError:
     print("Install: pip install clickzetta_zettapark_python python-dotenv")
     sys.exit(1)
 
-SCHEMA = "mcp_demo"
+SCHEMA = os.environ.get("CLICKZETTA_SCHEMA", "")
+
+if not SCHEMA:
+    print("[ERROR] .env 缺少 CLICKZETTA_SCHEMA，请填写目标 schema 名称")
+    sys.exit(1)
+
 PASS = "✓"
 FAIL = "✗"
 

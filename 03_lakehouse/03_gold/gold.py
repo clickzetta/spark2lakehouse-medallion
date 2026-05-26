@@ -78,7 +78,7 @@ def gold_fact_sales(session: Session, schema: str):
     print("OK")
 
 
-def run(session: Session, schema: str = "mcp_demo"):
+def run(session: Session, schema: str):
     gold_dim_customers(session, schema)
     gold_dim_products(session, schema)
     gold_fact_sales(session, schema)

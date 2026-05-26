@@ -134,7 +134,7 @@ def silver_crm_sales_details(session: Session, src_schema: str, tgt_schema: str)
     print("OK")
 
 
-def run(session: Session, src_schema: str = "mcp_demo", tgt_schema: str = "mcp_demo"):
+def run(session: Session, src_schema: str, tgt_schema: str):
     silver_crm_cust_info(session, src_schema, tgt_schema)
     silver_crm_prd_info(session, src_schema, tgt_schema)
     silver_crm_sales_details(session, src_schema, tgt_schema)

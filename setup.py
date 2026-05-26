@@ -4,7 +4,7 @@ spark2lakehouse-medallion 一键初始化脚本
 
 执行顺序：
   1. 连接 ClickZetta Lakehouse（ZettaPark Session）
-  2. 创建 Volume（mcp_demo.medallion_vol）
+  2. 创建 Volume（<schema>.medallion_vol）
   3. 上传 datasets/engineering/ 所有 CSV 到 Volume
   4. Bronze：从 Volume 读取 CSV → 写入 bronze 表
   5. Silver：清洗 CRM + ERP 数据
@@ -30,13 +30,18 @@ except ImportError:
     print("请先安装依赖: pip install clickzetta_zettapark_python python-dotenv")
     sys.exit(1)
 
-# ── 配置 ────────────────────────────────────────────────────────────────────
+# ── 配置（从环境变量读取，无默认值强制用户填写） ──────────────────────────────
 
-SCHEMA_NAME      = "mcp_demo"
-VOLUME_NAME      = "medallion_vol"
+SCHEMA_NAME      = os.environ.get("CLICKZETTA_SCHEMA", "")
+VOLUME_NAME      = os.environ.get("CLICKZETTA_VOLUME", "medallion_vol")
+
+if not SCHEMA_NAME:
+    print("[ERROR] .env 缺少 CLICKZETTA_SCHEMA，请填写目标 schema 名称")
+    sys.exit(1)
+
 VOLUME_ID        = f"{SCHEMA_NAME}.{VOLUME_NAME}"   # used for DDL (CREATE/DROP)
 VOLUME_REF       = VOLUME_NAME                      # used for PUT (no schema prefix)
-VOLUME_PATH      = f"/Volumes/quick_start/{SCHEMA_NAME}/{VOLUME_NAME}"
+VOLUME_PATH      = f"/Volumes/{os.environ.get('CLICKZETTA_WORKSPACE', 'quick_start')}/{SCHEMA_NAME}/{VOLUME_NAME}"
 VOLUME_URI_BASE  = f"vol://{SCHEMA_NAME}.{VOLUME_NAME}"  # ZettaPark read path
 
 DATASETS_DIR = Path(__file__).parent / "datasets" / "engineering"

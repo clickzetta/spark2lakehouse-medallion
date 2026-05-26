@@ -93,7 +93,7 @@ def silver_erp_px_cat_g1v2(session: Session, src_schema: str, tgt_schema: str):
     print("OK")
 
 
-def run(session: Session, src_schema: str = "mcp_demo", tgt_schema: str = "mcp_demo"):
+def run(session: Session, src_schema: str, tgt_schema: str):
     silver_erp_cust_az12(session, src_schema, tgt_schema)
     silver_erp_loc_a101(session, src_schema, tgt_schema)
     silver_erp_px_cat_g1v2(session, src_schema, tgt_schema)
