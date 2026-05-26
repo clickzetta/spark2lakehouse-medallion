@@ -1,97 +1,49 @@
-# Databricks Bootcamp 2026
+# spark2lakehouse-medallion
 
-Welcome to the **Databricks Data Lakehouse Project** by **Data With Baraa**.
+> **Spark SQL → ClickZetta Lakehouse 迁移示例**
 
-This repository contains a complete, real-world **Data Lakehouse implementation** built on Databricks, including datasets, notebooks, SQL examples, and exercises. Everything here is designed to help you understand how modern data teams use Databricks in practice, from data ingestion and transformation to analytics-ready data products.
+本项目 fork 自 [DataWithBaraa/databricks_bootcamp_2026](https://github.com/DataWithBaraa/databricks_bootcamp_2026)（MIT License），在保留原始 Databricks Notebook 代码的基础上，新增了对应的 **ClickZetta Lakehouse SQL 实现**和**迁移说明文档**。
 
----
+## 项目结构
 
-## ⚠️ Important Note
+```
+├── datasets/           # 原始数据集（CRM + ERP CSV 文件）
+├── script/             # 原始 Databricks Notebooks（PySpark）
+│   ├── bronze/         #   Bronze 层：原始数据摄取
+│   ├── silver/         #   Silver 层：数据清洗与标准化
+│   └── gold/           #   Gold 层：维度建模
+├── lakehouse/          # ✅ Lakehouse 实现（ClickZetta SQL）
+│   ├── bronze/         #   Bronze 层 SQL
+│   ├── silver/         #   Silver 层 SQL
+│   └── gold/           #   Gold 层 SQL
+└── migration/          # ✅ 迁移说明文档
+    ├── 01_overview.md
+    ├── 02_medallion_mapping.md
+    └── 03_step_by_step.md
+```
 
-Build this project **on your own first** using the **Notion roadmap**.  
-Use this repository **only as a reference** if you get stuck.
+## 数据架构
 
-Before starting, **watch the Databricks Bootcamp**, where I explain the architecture and decisions behind this project.
+| 层次 | 说明 | 原始实现 | Lakehouse 实现 |
+|------|------|---------|---------------|
+| Bronze | 原始数据，不做转换 | PySpark 读 CSV → 写 Delta | `COPY INTO` 或 `CREATE TABLE AS SELECT` |
+| Silver | 清洗、去重、标准化 | PySpark DataFrame 转换 | 纯 SQL `INSERT INTO SELECT` |
+| Gold | 维度建模（dim/fact） | PySpark join + 聚合 | 纯 SQL 维度表 + 事实表 |
 
-- 🧭 Notion Roadmap: [Open guide](https://candle-gosling-511.notion.site/Project-Building-the-Bike-Data-Lakehouse-2e734b251f1280ab8dadc269e033cc38?source=copy_link)
-- ▶️ Databricks Bootcamp: [Watch on YouTube](https://www.youtube.com/playlist?list=PLNcg_FV9n7qZoxVkw-KPhcmgLWjHWVUc9)
-- 🎉 Finished? Share it on [LinkedIn](https://www.linkedin.com/in/baraa-khatib-salkini/). Let’s celebrate
+## 数据源
 
----
+- **CRM 系统**：客户信息（cust_info）、产品信息（prd_info）、销售明细（sales_details）
+- **ERP 系统**：客户补充信息（CUST_AZ12）、地区信息（LOC_A101）、产品分类（PX_CAT_G1V2）
 
-## 🏗️ Architecture
+## 快速开始
 
-This project follows the **Medallion Architecture**:
+1. 阅读 [迁移概述](migration/01_overview.md)
+2. 参考 [Medallion 架构映射](migration/02_medallion_mapping.md)
+3. 按照 [逐步迁移指南](migration/03_step_by_step.md) 执行
 
-### 🥉 Bronze Layer
-- Raw data ingestion  
-- Schema inference and storage as Delta tables  
+## 原始项目
 
-### 🥈 Silver Layer
-- Data cleaning and standardization  
-- Type casting and validation  
-
-### 🥇 Gold Layer
-- Dimensional Data Model (Business Transformation)
-- Ready for BI and analysis  
-
----
-
-## 🛠️ Technologies Used
-
-- Databricks  
-- Apache Spark  
-- PySpark  
-- Spark SQL  
-- Delta Lake  
-- Unity Catalog  
-
-
----
-
-## Prerequisites
-- Basic SQL, Python and some Pyspark knowledge  
-- No prior Databricks experience required  
-
----
-
-## ☕ Stay Connected
-
-## 🌍 Connect With Me
-
-[![YouTube](https://img.shields.io/badge/YouTube-red?style=for-the-badge&logo=youtube&logoColor=white)](https://www.youtube.com/@DataWithBaraa)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/baraa-khatib-salkini)
-[![Website](https://img.shields.io/badge/Website-000000?style=for-the-badge&logo=google-chrome&logoColor=white)](https://www.datawithbaraa.com)
-[![Newsletter](https://img.shields.io/badge/Newsletter-FF5722?style=for-the-badge&logo=substack&logoColor=white)](https://www.blog.datawithbaraa.com/subscribe)
-
----
-
-## 🎓 Courses (Structured & Certified)
-
-- 🏅 **SQL Full Course** → [Start here](https://www.datawithbaraa.com/course/sql-full-course-for-beginners)
-- 🏅 **Tableau Full Course** → [Start here](https://www.datawithbaraa.com/course/tableau-ultimate-full-course-for-beginners)
-
----
-
-## ▶️ Free YouTube Courses
-
-- **SQL Full Course** → [Watch on YouTube](https://youtu.be/SSKVgrwhzus)
-- **Python Full Course** → [Watch on YouTube](https://www.youtube.com/playlist?list=PLNcg_FV9n7qZGfFl2ANI_zISzNp257Lwn)
-- **Tableau Full Course** → [Watch on YouTube](https://youtu.be/UcGF09Awm4Y)
-- **Real-World Data Projects** → [Watch on YouTube](https://www.youtube.com/playlist?list=PLNcg_FV9n7qZ4Ym8ZriYT6WF8TaC2e_R7)
-- **Data Career Roadmaps** → [Watch on YouTube](https://www.youtube.com/playlist?list=PLNcg_FV9n7qah95jp-aPtysu7kFCbg7hd)
-
-
----
-
-## 🛡️ License
-
-This project is licensed under the [MIT License](LICENSE). You are free to use, modify, and share this project with proper attribution.
-
-## 🌟 About Me
-
-Hi, I’m **Baraa Khatib Salkini**, also known as **Data With Baraa**.
-I’m a senior data professional and educator with over 17 years of industry experience, working across data engineering, analytics, and modern data platforms. I’ve led large-scale data projects in real companies and now focus on teaching practical, real-world data skills through my courses, YouTube content, and bootcamps.
-My goal is simple: help you understand how data actually works in real systems, not just how to write code.
-
-
+- 原始作者：[DataWithBaraa](https://github.com/DataWithBaraa)
+- 原始 Repo：[databricks_bootcamp_2026](https://github.com/DataWithBaraa/databricks_bootcamp_2026)
+- License：MIT
+- 技术栈：Databricks、PySpark、Delta Lake、Unity Catalog
