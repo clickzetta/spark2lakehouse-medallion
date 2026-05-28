@@ -74,14 +74,30 @@
 
 ## 快速开始
 
-1. 安装依赖：`pip install clickzetta_zettapark_python python-dotenv`
-2. 复制配置：`cp .env.sample .env`，填写 ClickZetta 连接信息
-3. 按顺序运行 `03_lakehouse/` 下的 notebooks：
-   - `init_lakehouse.ipynb` — 创建 Schema、Volume，上传 CSV 数据集
-   - `01_bronze/bronze.ipynb` — 加载原始数据
-   - `02_silver/silver_orchestration.ipynb` — 清洗全部 Silver 表
-   - `03_gold/gold_orchestration.ipynb` — 构建维度表和事实表
-4. 验证迁移结果：运行 `04_validate.ipynb`
+```bash
+# 1. 安装依赖
+pip install clickzetta_zettapark_python python-dotenv jupyter
+
+# 2. 配置连接
+cp .env.sample .env
+# 编辑 .env，填写 ClickZetta 连接信息
+
+# 3. 初始化（创建 Schema、Volume，上传 CSV 数据集）
+python setup.py
+
+# 4. 按顺序运行 notebooks
+jupyter notebook
+# 依次运行：
+#   03_lakehouse/01_bronze/bronze.ipynb
+#   03_lakehouse/02_silver/silver_orchestration.ipynb
+#   03_lakehouse/03_gold/gold_orchestration.ipynb
+
+# 5. 验证迁移结果
+#   运行 04_validate.ipynb
+
+# 6. 清理所有 Lakehouse 对象（测试完成后）
+python reset.py
+```
 
 阅读 [迁移概述](02_migration/01_overview.md) 和 [Medallion 架构映射](02_migration/02_medallion_mapping.md) 了解迁移细节。
 
